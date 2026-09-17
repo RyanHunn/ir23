@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500&family=Libre+Bodoni:wght@500&family=EB+Garamond:wght@500&family=Spectral:wght@500&family=Oswald:wght@500&family=Vollkorn:wght@400;600&family=Vollkorn+SC:wght@600&family=Libre+Caslon+Display&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; background: #d9d7d1; }
+  * { box-sizing: border-box; }
+  a { color: #a4141e; text-decoration: none; }
+</style>
+</helmet>
+<div style="font-family: Vollkorn, Georgia, serif; color: #1b1815; padding: clamp(28px, 5vw, 72px); max-width: 1100px; margin: 0 auto">
+  <div style="font-family: 'Vollkorn SC', Georgia, serif; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: #a4141e">Heading font options</div>
+  <p style="font-size: 17px; line-height: 1.6; max-width: 60ch; color: #433d35; margin: 14px 0 44px">Same H2 and eyebrow at real size, body text unchanged. Current is A.</p>
+
+  <div style="display: flex; flex-direction: column; gap: 8px">
+
+    <div style="background: #f2efe9; padding: clamp(24px, 3vw, 40px)">
+      <div style="font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: #8a8378; margin-bottom: 18px">A · Bodoni Moda — current</div>
+      <h2 style="font-family: 'Bodoni Moda', Georgia, serif; font-weight: 500; font-size: clamp(32px, 4.4vw, 54px); line-height: 1.1; margin: 0 0 12px">1.Kompanie/IR23, Re-enacted</h2>
+      <p style="font-size: 17px; line-height: 1.66; margin: 0; max-width: 60ch; color: #433d35">Since 1999, IR23 has been an anchor of the Central Powers line at the Great War Association site in Newville, Pennsylvania.</p>
+    </div>
+
+    <div style="background: #f2efe9; padding: clamp(24px, 3vw, 40px)">
+      <div style="font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: #8a8378; margin-bottom: 18px">B · Libre Bodoni — same era, sturdier strokes, less glare</div>
+      <h2 style="font-family: 'Libre Bodoni', Georgia, serif; font-weight: 500; font-size: clamp(32px, 4.4vw, 54px); line-height: 1.1; margin: 0 0 12px">1.Kompanie/IR23, Re-enacted</h2>
+      <p style="font-size: 17px; line-height: 1.66; margin: 0; max-width: 60ch; color: #433d35">Since 1999, IR23 has been an anchor of the Central Powers line at the Great War Association site in Newville, Pennsylvania.</p>
+    </div>
+
+    <div style="background: #f2efe9; padding: clamp(24px, 3vw, 40px)">
+      <div style="font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: #8a8378; margin-bottom: 18px">C · Libre Caslon Display — 19th-c. book face, warmer, plainer</div>
+      <h2 style="font-family: 'Libre Caslon Display', Georgia, serif; font-weight: 400; font-size: clamp(32px, 4.4vw, 54px); line-height: 1.1; margin: 0 0 12px">1.Kompanie/IR23, Re-enacted</h2>
+      <p style="font-size: 17px; line-height: 1.66; margin: 0; max-width: 60ch; color: #433d35">Since 1999, IR23 has been an anchor of the Central Powers line at the Great War Association site in Newville, Pennsylvania.</p>
+    </div>
+
+    <div style="background: #f2efe9; padding: clamp(24px, 3vw, 40px)">
+      <div style="font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: #8a8378; margin-bottom: 18px">D · EB Garamond — old-style, quiet, most bookish</div>
+      <h2 style="font-family: 'EB Garamond', Georgia, serif; font-weight: 500; font-size: clamp(34px, 4.7vw, 58px); line-height: 1.1; margin: 0 0 12px">1.Kompanie/IR23, Re-enacted</h2>
+      <p style="font-size: 17px; line-height: 1.66; margin: 0; max-width: 60ch; color: #433d35">Since 1999, IR23 has been an anchor of the Central Powers line at the Great War Association site in Newville, Pennsylvania.</p>
+    </div>
+
+    <div style="background: #f2efe9; padding: clamp(24px, 3vw, 40px)">
+      <div style="font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: #8a8378; margin-bottom: 18px">E · Spectral — transitional serif, solid and even, no fuss</div>
+      <h2 style="font-family: Spectral, Georgia, serif; font-weight: 500; font-size: clamp(30px, 4.1vw, 50px); line-height: 1.12; margin: 0 0 12px">1.Kompanie/IR23, Re-enacted</h2>
+      <p style="font-size: 17px; line-height: 1.66; margin: 0; max-width: 60ch; color: #433d35">Since 1999, IR23 has been an anchor of the Central Powers line at the Great War Association site in Newville, Pennsylvania.</p>
+    </div>
+
+    <div style="background: #f2efe9; padding: clamp(24px, 3vw, 40px)">
+      <div style="font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: #8a8378; margin-bottom: 18px">F · Vollkorn — the body face, one weight up: single-font discipline</div>
+      <h2 style="font-family: Vollkorn, Georgia, serif; font-weight: 600; font-size: clamp(31px, 4.2vw, 52px); line-height: 1.12; margin: 0 0 12px">1.Kompanie/IR23, Re-enacted</h2>
+      <p style="font-size: 17px; line-height: 1.66; margin: 0; max-width: 60ch; color: #433d35">Since 1999, IR23 has been an anchor of the Central Powers line at the Great War Association site in Newville, Pennsylvania.</p>
+    </div>
+
+    <div style="background: #f2efe9; padding: clamp(24px, 3vw, 40px)">
+      <div style="font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: #8a8378; margin-bottom: 18px">G · Oswald — condensed grotesk in the spirit of Imperial poster lettering</div>
+      <h2 style="font-family: Oswald, 'Arial Narrow', sans-serif; font-weight: 500; font-size: clamp(32px, 4.4vw, 54px); line-height: 1.08; margin: 0 0 12px; letter-spacing: 0.01em; text-transform: uppercase">1.Kompanie/IR23, Re-enacted</h2>
+      <p style="font-size: 17px; line-height: 1.66; margin: 0; max-width: 60ch; color: #433d35">Since 1999, IR23 has been an anchor of the Central Powers line at the Great War Association site in Newville, Pennsylvania.</p>
+    </div>
+
+  </div>
+</div>
+
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Infanterie-Regiment 23 von Winterfeldt</title>
+<meta name="description" content="1.Kompanie/IR23 — a WWI German infantry living-history unit at the Great War Association, Newville, PA. Apply to join.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Oswald:wght@400;500;600&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Top bar -->
+<header class="topbar">
+  <button type="button" class="menu-trigger" id="menuOpenBtn" aria-haspopup="true" aria-expanded="false" aria-controls="navPanel">
+    <span class="menu-trigger__bars" aria-hidden="true">
+      <span></span><span></span><span class="accent"></span>
+    </span>
+    <span class="menu-trigger__label">Menü</span>
+  </button>
+  <button type="button" class="btn btn--solid" data-nav="apply">
+    <span>Apply →</span><span class="btn__stud" aria-hidden="true"></span>
+  </button>
+</header>
+
+<!-- Slide-out nav -->
+<div class="nav-overlay" id="navOverlay" hidden>
+  <div class="nav-panel" id="navPanel">
+    <button type="button" class="nav-close" id="navCloseBtn">✕ Schließen</button>
+    <nav class="nav-links">
+      <button type="button" class="nav-link" data-nav="home">IR23 Re-enacted</button>
+      <div class="nav-link nav-link--disabled">
+        <span>The Original IR23</span>
+        <span class="nav-link__badge">In Vorbereitung</span>
+      </div>
+      <button type="button" class="nav-link nav-link--bordered" data-nav="apply">Apply</button>
+    </nav>
+    <div class="nav-footer">
+      <div class="nav-footer__label">Recruiting</div>
+      <a href="mailto:rekrut@ir23.com">rekrut@ir23.com</a>
+      <div class="nav-footer__sub">Great War Association · Newville, PA</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HOME PAGE ============ -->
+<main id="pageHome" class="page">
+
+  <section class="hero">
+    <div class="hero__photo"></div>
+    <div class="hero__scrim"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">Infanterie-Regiment <br>Nr. 23</h1>
+      <p class="tagline">Für Kaiser, Gott, und Vaterland!</p>
+      <p class="hero__lede">Relive the Great War through the eyes of a German infantryman at the premier WWI re-enactment event in the world.</p>
+      <button type="button" class="btn btn--solid" data-nav="apply">
+        <span>Apply →</span><span class="btn__stud" aria-hidden="true"></span>
+      </button>
+    </div>
+  </section>
+
+  <section class="kompanie">
+    <div class="kompanie__cross-slot">
+      <img id="ironCross" class="iron-cross" src="photos/iron-cross.png" alt="">
+    </div>
+    <div class="kompanie__row">
+      <figure class="kompanie__figure">
+        <img src="photos/kompanie-formation.jpg" alt="1. Kompanie IR23 formed up at the Great War Association site">
+      </figure>
+      <div class="kompanie__copy">
+        <div class="eyebrow eyebrow--red">EST. 1993</div>
+        <h2 class="h2">1.Kompanie/IR23, Re-enacted</h2>
+        <p class="body-text">Since 1993, IR23 has been an anchor of the Central Powers line at the Great War Association site in Newville, Pennsylvania. We recreate authentic, yet enjoyable experiences of everyday life and battle in 1918, from our frontline trenches to our 35-man, underground bunker on-site.</p>
+        <button type="button" class="btn btn--outline" data-nav="apply">
+          <span>Apply →</span><span class="btn__stud" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="feldzug">
+    <div class="stripe-top" aria-hidden="true"></div>
+    <div class="feldzug__inner">
+      <div class="eyebrow eyebrow--muted">Newville, Pennsylvania</div>
+      <h2 class="h2 h2--light">Feldzug 1918: Your First Event</h2>
+      <p class="body-text body-text--light body-text--wide">The 1918 tactical re-enactment at Newville, PA is held twice per year. These events are the highest-fidelity First World War re-enactments in the world.</p>
+      <p class="label label--light">With IR23, you'll experience…</p>
+
+      <div class="feldzug__cards">
+        <article class="card">
+          <img src="photos/trench-warfare.jpg" alt="IR23 men in the line at Newville">
+          <div class="card__body">
+            <h3 class="h3">Frontline Trench Warfare</h3>
+            <p class="body-text body-text--light">The GWA site allows us to stage mock WWI battles on a scale that feels real in the moment. We simulate combat with blank fire rifles and machine guns, air-powered mortars, real biplanes, and, of course, <em>hundreds</em> of re-enactors on both sides.</p>
+            <p class="body-text body-text--light">You will get a taste of WWI combat: clearing enemy trenches, patrolling No Man's Land in the pitch darkness, ducking for cover under artillery, shoring up positions with sandbags, and taking part in large-scale assaults with other regiments.</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="photos/bunker-life.jpg" alt="Kneipe by lamplight in the IR23 bunker">
+          <div class="card__body">
+            <h3 class="h3">Bunker Life</h3>
+            <p class="body-text body-text--light">IR23 possesses the largest authentically-built, underground bunker on the Central Powers line — a true &ldquo;time capsule&rdquo; with room for up to 35 men. Inside our bunker, you will live, eat, and sleep just as the German soldier of 1918 did.</p>
+            <p class="body-text body-text--light">Our bunker is also the home base of our unit, where we hold our <em>Kneipe</em> (sitting around the table singing German songs, food, drink, and games), unit meetings, and generally, a Saturday night post-combat gathering open to any GWA unit.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="feldzug__strip">
+        <img src="photos/newville-wide.jpg" alt="Column on the march at the Newville site">
+        <img src="photos/kit-detail.jpg" alt="Rekrut in field kit, 1918 impression">
+        <img src="photos/trench-works.jpg" alt="Filling sandbags to shore up a trench position">
+      </div>
+    </div>
+  </section>
+
+  <div class="wire-band" role="presentation">
+    <div class="wire-band__wire"></div>
+    <div class="wire-band__fade"></div>
+    <div class="wire-band__inset"></div>
+  </div>
+
+  <section class="values">
+    <div class="values__inner">
+      <div class="values__head">
+        <div>
+          <div class="eyebrow eyebrow--red">Unit Values</div>
+          <h2 class="h2">Do you belong in IR23?</h2>
+        </div>
+        <p class="body-text body-text--narrow">Good fits for our unit culture are seeking a healthy balance of kit &amp; culture authenticity, living history experiences, and fun.</p>
+      </div>
+
+      <div class="values__grid">
+        <article class="value-card">
+          <h3 class="h3">Authenticity</h3>
+          <p class="body-text">Our kit standards are above average. All our members <em>want</em> to uphold this reputation and work between every event to improve their impression, even with small details.</p>
+        </article>
+        <article class="value-card">
+          <h3 class="h3">Fraternity</h3>
+          <p class="body-text">We're a group of guys you'd want to spend a weekend with. Members are voted in <em>only</em> if they're a fit for the unit. We maintain collective buy-in and real camaraderie without forcing it.</p>
+        </article>
+        <article class="value-card">
+          <h3 class="h3">Gemütlichkeit</h3>
+          <p class="body-text">In English, &ldquo;enjoyment&rdquo;. Although we wear military uniforms, we're really a social club. Our members are active year-round online, and we make a point to enjoy our time together at events.</p>
+        </article>
+      </div>
+
+      <div class="values__cta">
+        <button type="button" class="btn btn--solid" data-nav="apply">
+          <span>Apply →</span><span class="btn__stud" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="afford">
+    <div class="stripe-top" aria-hidden="true"></div>
+    <div class="afford__grid">
+      <img class="afford__photo" src="photos/affordable.jpg" alt="An IR23 man helping a comrade with his marching pack">
+      <div class="afford__copy">
+        <div class="eyebrow eyebrow--muted">MANAGING COSTS</div>
+        <h2 class="h2 h2--light">WE'LL HELP YOU AFFORD IT</h2>
+        <p class="body-text body-text--light body-text--narrow2">IR23 supports beginning members practically, because building a quality Imperial German infantry impression can be expensive and time-consuming.</p>
+        <ul class="afford__list">
+          <li>
+            <span class="afford__num">01</span>
+            <p class="body-text body-text--light"><strong>Buy once, buy right.</strong> Our golden rule for recruits is, <em>ask before you buy!</em> We help you source correct kit items right off the bat, so you don't have to replace inferior gear later.</p>
+          </li>
+          <li>
+            <span class="afford__num">02</span>
+            <p class="body-text body-text--light"><strong>Loaner gear.</strong> We do not expect Rekruten to have their full kit for their first couple events. As you build a kit, members will happily supply loaner items to fill out what you have yet to acquire.</p>
+          </li>
+          <li class="afford__item--last">
+            <span class="afford__num">03</span>
+            <p class="body-text body-text--light"><strong>Access to deals.</strong> Buy used gear from unit members, at events, or online. We will connect you with the marketplace for affordable kit.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="faq__inner">
+      <h2 class="h2">FREQUENTLY ASKED QUESTIONS</h2>
+      <div class="faq__list" id="faqList"></div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="stripe-top" aria-hidden="true"></div>
+    <div class="closing__photo" role="presentation"></div>
+    <div class="closing__inner">
+      <div>
+        <h2 class="h2 h2--light closing__title">Ready to fight for the Kaiser?</h2>
+        <p class="body-text body-text--light body-text--narrow3">Fill out our application form to get started, and we'll respond when we're taking new recruits. In our introductory conversation, we'll discuss whether you and IR23 are a good fit.</p>
+        <button type="button" class="btn btn--solid btn--lg" data-nav="apply">
+          <span>Apply →</span><span class="btn__stud" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ APPLY PAGE ============ -->
+<main id="pageApply" class="page" hidden>
+
+  <section class="apply-intro">
+    <div class="apply-intro__inner">
+      <h1 class="apply-title">VON WINTERFELDT VORAN!</h1>
+      <p class="body-text body-text--light body-text--narrow4">Please fill out the application form, and IR23 officers will respond when we're taking in new recruits.</p>
+    </div>
+  </section>
+
+  <section class="apply-form">
+    <div class="apply-form__inner">
+      <aside class="apply-form__aside">
+        <img src="photos/helft-uns-siegen.jpg" alt="Helft uns siegen! — Fritz Erler war-loan poster, 1917">
+        <div class="apply-form__back">
+          <button type="button" class="btn btn--outline-dark" data-nav="home">← Back to IR23</button>
+        </div>
+      </aside>
+      <div class="apply-form__panel">
+        <div class="stripe-top" aria-hidden="true"></div>
+        <div id="formSlot"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__name">Infanterie-Regiment 23 von Winterfeldt (2. Oberschlesisches), 1. Kompanie</div>
+    <div class="site-footer__links">
+      <a href="mailto:rekrut@ir23.com">rekrut@ir23.com</a>
+      <span>Member Club of the Great War Association · Newville, PA</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

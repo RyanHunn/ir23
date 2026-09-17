@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&amp;family=Oswald:wght@400;500;600&amp;family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #d9d7d1; }
+  * { box-sizing: border-box; }
+  a { color: #a4141e; text-decoration: none; }
+  a:hover { color: #1b1815; }
+  input, textarea, button { font-family: inherit; }
+  @keyframes ir23fade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes ir23slide { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+</style>
+</helmet>
+<div style="font-family: 'Source Serif 4', Georgia, serif; background: #d9d7d1; color: #1b1815; min-height: 100vh; overflow-x: hidden">
+
+  <div style="position: fixed; top: 0; left: 0; right: 0; z-index: 60; display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(16px, 4vw, 44px); background: rgba(217,215,209,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(27,24,21,0.16)">
+    <button type="button" onClick="{{ openMenu }}" style="display: flex; align-items: center; gap: 12px; background: none; border: 0; padding: 6px 2px; cursor: pointer; color: #1b1815">
+      <span style="display: flex; flex-direction: column; gap: 4px; width: 24px">
+        <span style="display: block; height: 2px; background: #1b1815"></span>
+        <span style="display: block; height: 2px; background: #1b1815"></span>
+        <span style="display: block; height: 2px; background: #a4141e"></span>
+      </span>
+      <span style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 15px; letter-spacing: 0.16em; text-transform: uppercase">Menü</span>
+    </button>
+    <button type="button" onClick="{{ goApply }}" style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; background: #a4141e; color: #f2efe9; border: 0; padding: 12px 42px 12px 22px; cursor: pointer; position: relative; display: inline-flex; align-items: center; clip-path: polygon(0 0, 100% 0, 100% 50%, 100% 100%, 0 100%); transition: clip-path 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease" style-hover="background: #dcc353; color: #a4141e; border-color: #dcc353; clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%); --stud: 1; --studScale: 1">Apply →<span style="position: absolute; right: 13px; top: 50%; margin-top: -7px; width: 14px; height: 14px; border-radius: 50%; pointer-events: none; opacity: var(--stud, 0); transform: scale(var(--studScale, 0.5)); transition: opacity 0.18s ease, transform 0.2s ease; background-image: url('photos/button-crown.png'), radial-gradient(circle at 34% 28%, #f7e6ad 0%, #d8aa30 48%, #966c14 100%); background-size: cover; background-position: center; background-blend-mode: overlay; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.35), 0 1px 3px rgba(0,0,0,0.4)"></span></button>
+  </div>
+
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position: fixed; inset: 0; z-index: 80; background: rgba(27,24,21,0.55); animation: ir23fade 0.18s ease-out" onClick="{{ closeMenu }}">
+      <div style="width: min(440px, 88vw); height: 100%; background: #f2efe9; border-right: 10px solid transparent; border-image: repeating-linear-gradient(45deg, #f2efe9 0 7px, #16130f 7px 14px) 10; padding: 30px clamp(24px, 5vw, 48px); display: flex; flex-direction: column; animation: ir23slide 0.22s ease-out">
+        <button type="button" onClick="{{ closeMenu }}" style="align-self: flex-start; background: none; border: 0; font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: #5c574f; cursor: pointer; padding: 0 0 44px 0">✕ Schließen</button>
+        <nav style="display: flex; flex-direction: column; gap: 4px">
+          <button type="button" onClick="{{ goHome }}" style="text-align: left; background: none; border: 0; border-top: 1px solid rgba(27,24,21,0.18); padding: 20px 0; font-family: Oswald, 'Arial Narrow', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(24px, 3.1vw, 34px); color: #1b1815; cursor: pointer" style-hover="color: #a4141e">IR23 Re-enacted</button>
+          <div style="border-top: 1px solid rgba(27,24,21,0.18); padding: 20px 0; font-family: Oswald, 'Arial Narrow', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(24px, 3.1vw, 34px); color: rgba(27,24,21,0.32); display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap">
+            <span>The Original IR23</span>
+            <span style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #5c574f">In Vorbereitung</span>
+          </div>
+          <button type="button" onClick="{{ goApply }}" style="text-align: left; background: none; border: 0; border-top: 1px solid rgba(27,24,21,0.18); border-bottom: 1px solid rgba(27,24,21,0.18); padding: 20px 0; font-family: Oswald, 'Arial Narrow', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(24px, 3.1vw, 34px); color: #1b1815; cursor: pointer" style-hover="color: #a4141e">Apply</button>
+        </nav>
+        <div style="margin-top: auto; padding-top: 40px; font-size: 15px; line-height: 1.7; color: #5c574f">
+          <div style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; font-size: 12px; color: #1b1815">Recruiting</div>
+          <a href="mailto:rekrut@ir23.com">rekrut@ir23.com</a>
+          <div style="margin-top: 6px">Great War Association · Newville, PA</div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <div>
+
+    <section style="position: relative; min-height: calc(100vh + 360px); display: flex; align-items: flex-end; padding: 120px clamp(20px, 5vw, 64px) calc(360px + clamp(96px, 15vh, 180px)); background: #d9d7d1">
+      <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; background-color: #16130f; background-image: url('photos/hero-trench.jpg'); background-size: cover; background-position: 50% 8%; background-repeat: no-repeat; -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 68%, rgba(0,0,0,0.72) 82%, rgba(0,0,0,0.26) 92%, rgba(0,0,0,0.05) 96%, transparent 99%); mask-image: linear-gradient(180deg, #000 0%, #000 68%, rgba(0,0,0,0.72) 82%, rgba(0,0,0,0.26) 92%, rgba(0,0,0,0.05) 96%, transparent 99%)"></div>
+      <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; pointer-events: none; background: linear-gradient(180deg, rgba(20,18,15,0.44) 0%, rgba(20,18,15,0.10) 30%, rgba(20,18,15,0.66) 58%, rgba(20,18,15,0.62) 78%, rgba(20,18,15,0.14) 92%, rgba(20,18,15,0) 97%)"></div>
+      <div style="position: relative; max-width: 1000px; color: #f2efe9">
+        
+        
+        
+        <h1 style="font-family: UnifrakturMaguntia, 'Bodoni Moda', serif; font-weight: 400; font-size: clamp(44px, 8.2vw, 118px); line-height: 1.02; margin: 0; letter-spacing: 0.01em; text-shadow: 0 2px 24px rgba(0,0,0,0.5); width: 1522px; height: 411px">Infanterie-Regiment <br>Nr. 23 <br><br></h1><p style="font-family: 'Bodoni Moda', Georgia, serif; font-style: italic; font-size: clamp(21px, 2.6vw, 32px); line-height: 1.35; margin: 0 0 18px; color: #f2efe9; text-align: left">Für Kaiser, Gott, und Vaterland!</p>
+        <p style="font-size: clamp(17px, 1.5vw, 21px); line-height: 1.6; margin: 0; max-width: 52ch; color: #e3dfd6; text-wrap: pretty">Relive the Great War through the eyes of a German infantryman at the premier WWI re-enactment event in the world.</p><button type="button" onClick="{{ goApply }}" style="margin-top: 34px; font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 15px; letter-spacing: 0.2em; text-transform: uppercase; background: #a4141e; color: #f2efe9; border: 0; padding: 18px 54px 18px 34px; cursor: pointer; position: relative; display: inline-flex; align-items: center; clip-path: polygon(0 0, 100% 0, 100% 50%, 100% 100%, 0 100%); transition: clip-path 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease" style-hover="background: #dcc353; color: #a4141e; border-color: #dcc353; clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%); --stud: 1; --studScale: 1">Apply →<span style="position: absolute; right: 13px; top: 50%; margin-top: -7px; width: 14px; height: 14px; border-radius: 50%; pointer-events: none; opacity: var(--stud, 0); transform: scale(var(--studScale, 0.5)); transition: opacity 0.18s ease, transform 0.2s ease; background-image: url('photos/button-crown.png'), radial-gradient(circle at 34% 28%, #f7e6ad 0%, #d8aa30 48%, #966c14 100%); background-size: cover; background-position: center; background-blend-mode: overlay; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.35), 0 1px 3px rgba(0,0,0,0.4)"></span></button>
+        
+      </div>
+    </section>
+
+    <section style="position: relative; overflow: hidden; padding: clamp(72px, 11vh, 132px) clamp(20px, 5vw, 64px)">
+      <div style="position: absolute; right: 0; top: 0; bottom: 0; width: clamp(0px, calc((100vw - 1120px) / 2), 300px); display: flex; align-items: center; justify-content: center; pointer-events: none; overflow: hidden">
+        <img ref="{{ crossRef }}" src="photos/iron-cross.png" alt="" style="width: 80%; max-width: 236px; opacity: 0.13; will-change: transform, opacity; transform: translateY(48px)">
+      </div>
+      <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: clamp(32px, 4vw, 64px); align-items: center">
+        <figure style="margin: 0; flex: 1.6 1 460px; min-width: 0">
+          <img src="photos/kompanie-formation.jpg" alt="1. Kompanie IR23 formed up at the Great War Association site" style="width: 100%; height: auto; display: block; border: 8px solid #f2efe9; box-shadow: 0 18px 44px rgba(27,24,21,0.22)">
+        </figure>
+        <div style="flex: 1 1 330px; min-width: 0">
+          <div style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 13px; letter-spacing: 0.24em; text-transform: uppercase; color: #a4141e">EST. 1993</div>
+          
+          <h2 style="font-family: Oswald, 'Arial Narrow', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.015em; font-size: clamp(32px, 4.4vw, 54px); line-height: 1.1; margin: 16px 0 24px">1.Kompanie/IR23, Re-enacted</h2><p style="font-size: clamp(17px, 1.4vw, 20px); line-height: 1.68; margin: 0 0 30px; color: #302b25; max-width: 56ch; text-wrap: pretty">Since 1993, IR23 has been an anchor of the Central Powers line at the Great War Association site in Newville, Pennsylvania. We recreate authentic, yet enjoyable experiences of everyday life and battle in 1918, from our frontline trenches to our 35-man, underground bunker on-site.</p>
+          <button type="button" onClick="{{ goApply }}" style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; background: none; color: #1b1815; border: 1px solid #1b1815; padding: 15px 48px 15px 28px; cursor: pointer; position: relative; display: inline-flex; align-items: center; clip-path: polygon(0 0, 100% 0, 100% 50%, 100% 100%, 0 100%); transition: clip-path 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease" style-hover="background: #dcc353; color: #a4141e; border-color: #dcc353; clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%); --stud: 1; --studScale: 1">Apply →<span style="position: absolute; right: 13px; top: 50%; margin-top: -7px; width: 14px; height: 14px; border-radius: 50%; pointer-events: none; opacity: var(--stud, 0); transform: scale(var(--studScale, 0.5)); transition: opacity 0.18s ease, transform 0.2s ease; background-image: url('photos/button-crown.png'), radial-gradient(circle at 34% 28%, #f7e6ad 0%, #d8aa30 48%, #966c14 100%); background-size: cover; background-position: center; background-blend-mode: overlay; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.35), 0 1px 3px rgba(0,0,0,0.4)"></span></button>
+        </div>
+      </div>
+    </section>
+
+    <section style="background: #16130f; color: #eae5db; padding: clamp(72px, 11vh, 132px) clamp(20px, 5vw, 64px); position: relative" style-before="content: ''; position: absolute; top: 0; left: 0; right: 0; height: 10px; background: repeating-linear-gradient(45deg, #f2efe9 0 7px, #16130f 7px 14px)">
+      <div style="max-width: 1180px; margin: 0 auto">
+        <div style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: #c9a0a4">Newville, Pennsylvania</div>
+        <h2 style="font-family: Oswald, 'Arial Narrow', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.015em; font-size: clamp(32px, 4.6vw, 58px); line-height: 1.08; margin: 16px 0 22px">Feldzug 1918: Your First Event</h2>
+        <p style="font-size: clamp(17px, 1.4vw, 21px); line-height: 1.66; margin: 0; max-width: 62ch; color: #cfc9bd; text-wrap: pretty">The 1918 tactical re-enactment at Newville, PA is held twice per year. These events are the highest-fidelity First World War re-enactments in the world.</p>
+        <p style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; margin: 40px 0 0; color: #eae5db">With IR23, you'll experience…</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: clamp(28px, 3.4vw, 48px); margin-top: 28px">
+          <article style="background: #201c17; border: 1px solid rgba(242,239,233,0.14)">
+            <img src="photos/trench-warfare.jpg" alt="IR23 men in the line at Newville" style="width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block">
+            <div style="padding: clamp(24px, 2.4vw, 36px)">
+              <h3 style="font-family: Oswald, 'Arial Narrow', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.015em; font-size: clamp(24px, 2.4vw, 32px); margin: 0 0 16px; color: #f2efe9">Frontline Trench Warfare</h3>
+              <p style="font-size: 17px; line-height: 1.66; margin: 0 0 14px; color: #cfc9bd; text-wrap: pretty">The GWA site allows us to stage mock WWI battles on a scale that feels real in the moment. We simulate combat with blank fire rifles and machine guns, air-powered mortars, real biplanes, and, of course, <em>hundreds</em> of re-enactors on both sides.</p>
+              <p style="font-size: 17px; line-height: 1.66; margin: 0; color: #cfc9bd; text-wrap: pretty">You will get a taste of WWI combat: clearing enemy trenches, patrolling No Man's Land in the pitch darkness, ducking for cover under artillery, shoring up positions with sandbags, and taking part in large-scale assaults with other regiments.</p>
+            </div>
+          </article>
+          <article style="background: #201c17; border: 1px solid rgba(242,239,233,0.14)">
+            <img src="photos/bunker-life.jpg" alt="Kneipe by lamplight in the IR23 bunker" style="width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block">
+            <div style="padding: clamp(24px, 2.4vw, 36px)">
+              <h3 style="font-family: Oswald, 'Arial Narrow', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.015em; font-size: clamp(24px, 2.4vw, 32px); margin: 0 0 16px; color: #f2efe9">Bunker Life</h3>
+              <p style="font-size: 17px; line-height: 1.66; margin: 0 0 14px; color: #cfc9bd; text-wrap: pretty">IR23 possesses the largest authentically-built, underground bunker on the Central Powers line — a true “time capsule” with room for up to 35 men. Inside our bunker, you will live, eat, and sleep just as the German soldier of 1918 did.</p>
+              <p style="font-size: 17px; line-height: 1.66; margin: 0; color: #cfc9bd; text-wrap: pretty">Our bunker is also the home base of our unit, where we hold our <em>Kneipe</em> (sitting around the table singing German songs, food, drink, and games), unit meetings, and generally, a Saturday night post-combat gathering open to any GWA unit.</p>
+            </div>
+          </article>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 18px">
+          <img src="photos/newville-wide.jpg" alt="Column on the march at the Newville site" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; border: 1px solid rgba(242,239,233,0.12)">
+          <img src="photos/kit-detail.jpg" alt="Rekrut in field kit, 1918 impression" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; border: 1px solid rgba(242,239,233,0.12)">
+          <img src="photos/trench-works.jpg" alt="Filling sandbags to shore up a trench position" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; border: 1px solid rgba(242,239,233,0.12)">
+        </div>
+      </div>
+    </section>
+
+    <div role="presentation" style="position: relative; height: clamp(118px, 13vw, 178px); background-color: #3e4636; background-image: url('photos/lozenge.png'); background-size: auto 230px; background-repeat: repeat; overflow: hidden">
+      <div style="position: absolute; inset: 0; background-image: url('photos/barbed-wire.jpg'); background-size: auto 100%; background-repeat: repeat-x; background-position: center; mix-blend-mode: multiply"></div>
+      <div style="position: absolute; inset: 0; background-image: linear-gradient(180deg, #16130f 0%, rgba(22,19,15,0.55) 26%, rgba(22,19,15,0) 62%)"></div>
+      <div style="position: absolute; inset: 0; box-shadow: inset 0 -1px 0 rgba(27,24,21,0.5), inset 0 0 90px rgba(27,24,21,0.35)"></div>
+    </div>
+
+    <section style="padding: clamp(72px, 11vh, 132px) clamp(20px, 5vw, 64px)">
+      <div style="max-width: 1180px; margin: 0 auto">
+        <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 28px">
+          <div>
+            <div style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: #a4141e">Unit Values</div>
+            <h2 style="font-family: Oswald, 'Arial Narrow', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.015em; font-size: clamp(32px, 4.6vw, 58px); line-height: 1.08; margin: 16px 0 0">Do you belong in IR23?</h2>
+          </div>
+          <p style="font-size: clamp(17px, 1.35vw, 20px); line-height: 1.62; margin: 0; max-width: 44ch; color: #302b25; text-wrap: pretty">Good fits for our unit culture are seeking a healthy balance of kit &amp; culture authenticity, living history experiences, and fun.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(24px, 3vw, 44px); margin-top: clamp(36px, 5vw, 60px)">
+          <article style="background: #f2efe9; padding: clamp(28px, 2.6vw, 40px); position: relative" style-before="content: ''; position: absolute; top: 0; left: 0; right: 0; height: 8px; background: repeating-linear-gradient(45deg, #f2efe9 0 7px, #16130f 7px 14px)">
+            <h3 style="font-family: Oswald, 'Arial Narrow', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.015em; font-size: 28px; margin: 0 0 14px">Authenticity</h3>
+            <p style="font-size: 17px; line-height: 1.66; margin: 0; color: #433d35; text-wrap: pretty">Our kit standards are above average. All our members <em>want</em> to uphold this reputation and work between every event to improve their impression, even with small details.</p>
+          </article>
+          <article style="background: #f2efe9; padding: clamp(28px, 2.6vw, 40px); position: relative" style-before="content: ''; position: absolute; top: 0; left: 0; right: 0; height: 8px; background: repeating-linear-gradient(45deg, #f2efe9 0 7px, #16130f 7px 14px)">
+            <h3 style="font-family: Oswald, 'Arial Narrow', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.015em; font-size: 28px; margin: 0 0 14px">Fraternity</h3>
+            <p style="font-size: 17px; line-height: 1.66; margin: 0; color: #433d35; text-wrap: pretty">We're a group of guys you'd want to spend a weekend with. Members are voted in <em>only</em> if they're a fit for the unit. We maintain collective buy-in and real camaraderie without forcing it.</p>
+          </article>
+          <article style="background: #f2efe9; padding: clamp(28px, 2.6vw, 40px); position: relative" style-before="content: ''; position: absolute; top: 0; left: 0; right: 0; height: 8px; background: repeating-linear-gradient(45deg, #f2efe9 0 7px, #16130f 7px 14px)">
+            <h3 style="font-family: Oswald, 'Arial Narrow', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.015em; font-size: 28px; margin: 0 0 14px">Gemütlichkeit</h3>
+            <p style="font-size: 17px; line-height: 1.66; margin: 0; color: #433d35; text-wrap: pretty">In English, “enjoyment”. Although we wear military uniforms, we're really a social club. Our members are active year-round online, and we make a point to enjoy our time together at events.</p>
+          </article>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; margin-top: clamp(36px, 4vw, 56px)">
+          <button type="button" onClick="{{ goApply }}" style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; background: #a4141e; color: #f2efe9; border: 0; padding: 16px 50px 16px 30px; cursor: pointer; position: relative; display: inline-flex; align-items: center; clip-path: polygon(0 0, 100% 0, 100% 50%, 100% 100%, 0 100%); transition: clip-path 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease" style-hover="background: #dcc353; color: #a4141e; border-color: #dcc353; clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%); --stud: 1; --studScale: 1">Apply →<span style="position: absolute; right: 13px; top: 50%; margin-top: -7px; width: 14px; height: 14px; border-radius: 50%; pointer-events: none; opacity: var(--stud, 0); transform: scale(var(--studScale, 0.5)); transition: opacity 0.18s ease, transform 0.2s ease; background-image: url('photos/button-crown.png'), radial-gradient(circle at 34% 28%, #f7e6ad 0%, #d8aa30 48%, #966c14 100%); background-size: cover; background-position: center; background-blend-mode: overlay; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.35), 0 1px 3px rgba(0,0,0,0.4)"></span></button>
+        </div>
+      </div>
+    </section>
+
+    <section style="background: #16130f; color: #eae5db; position: relative" style-before="content: ''; position: absolute; top: 0; left: 0; right: 0; height: 10px; background: repeating-linear-gradient(45deg, #f2efe9 0 7px, #16130f 7px 14px); z-index: 2">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 430px), 1fr)); align-items: stretch">
+        <img src="photos/affordable.jpg" alt="An IR23 man helping a comrade with his marching pack" style="width: 100%; height: 100%; min-height: clamp(430px, 62vh, 760px); object-fit: cover; object-position: 50% 38%; display: block">
+        <div style="padding: clamp(60px, 7vw, 108px) clamp(24px, 5vw, 84px)">
+          <div style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: #c9a0a4">MANAGING COSTS</div>
+          <h2 style="font-family: Oswald, 'Arial Narrow', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.015em; font-size: clamp(32px, 4.2vw, 54px); line-height: 1.08; margin: 16px 0 22px; color: #f2efe9">WE'LL HELP YOU AFFORD IT</h2>
+          <p style="font-size: clamp(17px, 1.4vw, 20px); line-height: 1.66; margin: 0 0 clamp(34px, 4vw, 52px); max-width: 46ch; color: #cfc9bd; text-wrap: pretty">IR23 supports beginning members practically, because building a quality Imperial German infantry impression can be expensive and time-consuming.</p>
+          <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0">
+            <li style="display: grid; grid-template-columns: auto 1fr; gap: clamp(18px, 2vw, 30px); border-top: 1px solid rgba(242,239,233,0.2); padding: 26px 0">
+              <span style="font-family: Oswald, 'Arial Narrow', sans-serif; font-weight: 500; font-size: 15px; letter-spacing: 0.1em; color: #dcc353; padding-top: 4px">01</span>
+              <p style="font-size: 17px; line-height: 1.66; margin: 0; color: #cfc9bd; text-wrap: pretty"><strong style="color: #f2efe9">Buy once, buy right.</strong> Our golden rule for recruits is, <em>ask before you buy!</em> We help you source correct kit items right off the bat, so you don't have to replace inferior gear later.</p>
+            </li>
+            <li style="display: grid; grid-template-columns: auto 1fr; gap: clamp(18px, 2vw, 30px); border-top: 1px solid rgba(242,239,233,0.2); padding: 26px 0">
+              <span style="font-family: Oswald, 'Arial Narrow', sans-serif; font-weight: 500; font-size: 15px; letter-spacing: 0.1em; color: #dcc353; padding-top: 4px">02</span>
+              <p style="font-size: 17px; line-height: 1.66; margin: 0; color: #cfc9bd; text-wrap: pretty"><strong style="color: #f2efe9">Loaner gear.</strong> We do not expect Rekruten to have their full kit for their first couple events. As you build a kit, members will happily supply loaner items to fill out what you have yet to acquire.</p>
+            </li>
+            <li style="display: grid; grid-template-columns: auto 1fr; gap: clamp(18px, 2vw, 30px); border-top: 1px solid rgba(242,239,233,0.2); border-bottom: 1px solid rgba(242,239,233,0.2); padding: 26px 0">
+              <span style="font-family: Oswald, 'Arial Narrow', sans-serif; font-weight: 500; font-size: 15px; letter-spacing: 0.1em; color: #dcc353; padding-top: 4px">03</span>
+              <p style="font-size: 17px; line-height: 1.66; margin: 0; color: #cfc9bd; text-wrap: pretty"><strong style="color: #f2efe9">Access to deals.</strong> Buy used gear from unit members, at events, or online. We will connect you with the marketplace for affordable kit.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section style="background: #cfccc5; padding: clamp(72px, 11vh, 132px) clamp(20px, 5vw, 64px)">
+      <div style="max-width: 900px; margin: 0 auto">
+        
+        <h2 style="font-family: Oswald, 'Arial Narrow', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.015em; font-size: clamp(30px, 4vw, 48px); line-height: 1.1; margin: 16px 0 40px; max-width: 32ch">FREQUENTLY ASKED QUESTIONS</h2>
+        <div style="display: flex; flex-direction: column">
+          <sc-for list="{{ faqs }}" as="item" hint-placeholder-count="9">
+            <div style="border-top: 1px solid rgba(27,24,21,0.22)">
+              <button type="button" onClick="{{ item.toggle }}" style="width: 100%; display: flex; align-items: baseline; justify-content: space-between; gap: 20px; text-align: left; background: none; border: 0; padding: 22px 0; cursor: pointer; color: #1b1815" style-hover="color: #a4141e">
+                <span style="font-family: 'Bodoni Moda', Georgia, serif; font-size: clamp(19px, 1.9vw, 24px); line-height: 1.3">{{ item.q }}</span>
+                <span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 26px; line-height: 1; color: #a4141e">{{ item.sign }}</span>
+              </button>
+              <sc-if value="{{ item.open }}" hint-placeholder-val="{{ false }}">
+                <div style="padding: 0 0 30px; max-width: 66ch">
+                  <p style="font-size: 17px; line-height: 1.72; margin: 0; color: #433d35; text-wrap: pretty">{{ item.a }}</p>
+                </div>
+              </sc-if>
+            </div>
+          </sc-for>
+          <div style="border-top: 1px solid rgba(27,24,21,0.22)"></div>
+        </div>
+      </div>
+    </section>
+
+    <section style="position: relative; overflow: hidden; padding: clamp(84px, 13vh, 150px) clamp(20px, 5vw, 64px); background: #16130f; color: #f2efe9; text-align: left" style-before="content: ''; position: absolute; top: 0; left: 0; right: 0; height: 10px; background: repeating-linear-gradient(45deg, #f2efe9 0 7px, #16130f 7px 14px); z-index: 3">
+      <div role="presentation" style="position: absolute; top: 0; right: 0; bottom: 0; width: clamp(0px, calc((100vw - 980px) * 10), 53%); background-image: url('photos/moving-up-1918.jpg'); background-size: cover; background-position: 54% 48%; clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%); pointer-events: none"></div>
+      <div style="position: relative; max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: clamp(24px, 3vw, 48px)">
+        <div>
+        <h2 style="font-family: Oswald, 'Arial Narrow', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.015em; font-size: clamp(34px, 5.4vw, 64px); line-height: 1.06; margin: 0 0 22px; max-width: 20ch">Ready to fight for the Kaiser?</h2>
+        <p style="font-size: clamp(17px, 1.5vw, 21px); line-height: 1.66; margin: 0; max-width: 48ch; color: #cfc9bd; text-wrap: pretty">Fill out our application form to get started, and we'll respond when we're taking new recruits. In our introductory conversation, we'll discuss whether you and IR23 are a good fit.</p>
+        <button type="button" onClick="{{ goApply }}" style="margin-top: 36px; font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 15px; letter-spacing: 0.2em; text-transform: uppercase; background: #a4141e; color: #f2efe9; border: 0; padding: 18px 56px 18px 36px; cursor: pointer; position: relative; display: inline-flex; align-items: center; clip-path: polygon(0 0, 100% 0, 100% 50%, 100% 100%, 0 100%); transition: clip-path 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease" style-hover="background: #dcc353; color: #a4141e; border-color: #dcc353; clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%); --stud: 1; --studScale: 1">Apply →<span style="position: absolute; right: 13px; top: 50%; margin-top: -7px; width: 14px; height: 14px; border-radius: 50%; pointer-events: none; opacity: var(--stud, 0); transform: scale(var(--studScale, 0.5)); transition: opacity 0.18s ease, transform 0.2s ease; background-image: url('photos/button-crown.png'), radial-gradient(circle at 34% 28%, #f7e6ad 0%, #d8aa30 48%, #966c14 100%); background-size: cover; background-position: center; background-blend-mode: overlay; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.35), 0 1px 3px rgba(0,0,0,0.4)"></span></button>
+        </div>
+        <div></div>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isApply }}" hint-placeholder-val="{{ false }}">
+  <div>
+    
+
+    <section style="padding: clamp(120px, 18vh, 200px) clamp(20px, 5vw, 64px) clamp(40px, 6vh, 72px); background: #16130f; color: #f2efe9">
+      <div style="max-width: 1100px; margin: 0 auto">
+        
+        <h1 style="font-family: Oswald, 'Arial Narrow', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.015em; font-size: clamp(48px, 9vw, 116px); line-height: 0.98; margin: 14px 0 0">VON WINTERFELDT VORAN!</h1>
+        
+        
+        <p style="font-size: clamp(17px, 1.4vw, 21px); line-height: 1.66; margin: 22px 0 0; max-width: 58ch; color: #cfc9bd; text-wrap: pretty">Please fill out the application form, and IR23 officers will respond when we're taking in new recruits.</p>
+      </div>
+    </section><section style="padding: clamp(44px, 7vh, 80px) clamp(20px, 5vw, 64px) clamp(72px, 11vh, 120px)">
+      <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: clamp(32px, 4vw, 56px); align-items: flex-start">
+        <aside style="display: flex; flex-direction: column; gap: 26px; flex: 0 1 330px; min-width: 0; margin-top: calc(-1 * clamp(70px, 11vh, 165px))">
+          <img src="photos/helft-uns-siegen.jpg" alt="Helft uns siegen! — Fritz Erler war-loan poster, 1917" style="width: 100%; height: auto; display: block; border: 10px solid #f2efe9; box-shadow: 0 24px 54px rgba(0,0,0,0.45)">
+          <div style="border-top: 1px solid rgba(27,24,21,0.2); padding-top: 22px">
+            <button type="button" onClick="{{ goHome }}" style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; background: none; border: 1px solid #1b1815; color: #1b1815; padding: 13px 42px 13px 22px; cursor: pointer; clip-path: polygon(0 0, 100% 0, 100% 50%, 100% 100%, 0 100%); transition: clip-path 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease" style-hover="background: #1b1815; color: #f2efe9; clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%); --stud: 1; --studScale: 1">← Back to IR23</button>
+          </div>
+        </aside>
+        <div style="flex: 1 1 400px; min-width: 0; background: #f2efe9; padding: clamp(16px, 2vw, 28px); position: relative" style-before="content: ''; position: absolute; top: 0; left: 0; right: 0; height: 8px; background: repeating-linear-gradient(45deg, #f2efe9 0 7px, #16130f 7px 14px)">
+          <sc-if value="{{ hasForm }}" hint-placeholder-val="{{ false }}">
+            <iframe src="{{ formUrl }}" title="IR23 application form" style="width: 100%; height: 1400px; border: 0; display: block; background: #f2efe9"></iframe>
+          </sc-if>
+          <sc-if value="{{ noForm }}" hint-placeholder-val="{{ true }}">
+            <div style="min-height: 520px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 48px 24px; background: repeating-linear-gradient(135deg, #e8e4dc 0 10px, #ece8e0 10px 20px); text-align: center">
+              <div style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: #5c574f">Google Form embed slot</div>
+              <p style="font-family: ui-monospace, Menlo, monospace; font-size: 13px; line-height: 1.8; margin: 0; max-width: 46ch; color: #5c574f">[ paste your Google Form embed URL into the<br>formUrl tweak — the form renders here ]</p>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <footer style="background: #cfccc5; padding: clamp(40px, 6vh, 64px) clamp(20px, 5vw, 64px); border-top: 1px solid rgba(27,24,21,0.2)">
+    <div style="max-width: 1180px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: baseline; font-size: 15px; color: #5c574f">
+      <div style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #1b1815">Infanterie-Regiment 23 von Winterfeldt (2. Oberschlesisches), 1. Kompanie</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 22px">
+        <a href="mailto:rekrut@ir23.com">rekrut@ir23.com</a>
+        <span>Member Club of the Great War Association · Newville, PA</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;formUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Application form&quot;},&quot;startPage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;apply&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Application form&quot;}}">
+class Component extends DCLogic {
+  state = { page: null, menuOpen: false, openFaq: null };
+
+  get page() { return this.state.page || this.props.startPage || 'home'; }
+
+  crossRef = React.createRef();
+
+  componentDidMount() {
+    this.onScroll = () => {
+      if (this.raf) return;
+      this.raf = requestAnimationFrame(() => {
+        this.raf = null;
+        const el = this.crossRef.current;
+        if (!el) return;
+        const r = el.getBoundingClientRect();
+        const vh = window.innerHeight || 1;
+        // 0 when the cross enters from below, 1 when it has passed the top
+        const p = Math.max(0, Math.min(1, (vh - r.top) / (vh + r.height)));
+        el.style.transform = 'translateY(' + ((0.5 - p) * 110).toFixed(1) + 'px)';
+        el.style.opacity = (0.05 + 0.13 * Math.sin(Math.PI * p)).toFixed(3);
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('resize', this.onScroll, { passive: true });
+    this.onScroll();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('resize', this.onScroll);
+    if (this.raf) cancelAnimationFrame(this.raf);
+  }
+
+  nav(page) {
+    this.setState({ page, menuOpen: false, openFaq: null });
+    if (typeof window !== 'undefined') window.scrollTo(0, 0);
+  }
+
+  renderVals() {
+    const questions = [
+      ['Who can join IR23?', 'IR23 is open to men ages 18+, though it is possible to start recruitment sooner. Attendance at Newville is prohibited before 18 for insurance reasons.'],
+      ['How do I join IR23?', 'Apply here on the unit website, and we’ll reach out when we’re taking new recruits. We’ll guide you the rest of the way!'],
+      ['How much does it cost to get started?', 'A good pair of boots, a uniform set, and starting fieldgear normally run about $1,000 as of 2026. The unit will help you start out with loaner gear, especially for your first couple events.'],
+      ['Do I need German language knowledge to participate?', 'German is not required, but we always recommend learning some German for your impression! We issue basic commands in German and use German names & phrases as part of our re-enactments. Knowing the language also helps immensely with cultural research and understanding.'],
+      ['Can I come to Newville before joining?', 'No. Newville is a private, participant-only event. The best way to get to know us is simply by applying.'],
+      ['Can I bring my family or friends?', 'WWI re-enactment at Newville differs from other re-enactment periods in that it recreates a frontline scenario where only combatants were involved. Although there are rear-line vignettes, such as field hospitals, kitchens, and prisoner depots, IR23 functions as a frontline infantry unit which means that we do not have the ability to accommodate roles for women and children. Outside frontline scenarios, at public displays, for example, families are more than welcome in camp, so long as they’re properly attired for 1910’s Europe!'],
+      ['What is the first event like with IR23?', 'For your first event, we always recommend that recruits come to the site by noon on Friday. You will attend “New Guy Safety Training” managed by the Great War Association, and get to know the unit. We’ll help you get to the site and get settled in. You will also be assigned to a unit member to “shadow” for the whole event.'],
+      ['Where do we sleep and eat during events?', 'We sleep in our unit bunker behind the second trench line. Most of our meals are cooked there and sent forward to the front where we eat at our posts, just like they did in WWI.'],
+      ['Why portray the German side of WWI?', 'As Americans, we’re used to a very different perspective of WWI. Re-enacting the German side is a chance to see the war in a whole new light and connect with an international community of re-enactors, researchers, enthusiasts, and collectors. The German experience of WWI was truly one of total war. Their soldiers fought on every major front, and their tactics, along with their nation, changed completely throughout the war. We do our best to relate to the complicated experiences of the men who fought for Germany 1914-1918.']
+    ];
+    const formUrl = (this.props.formUrl || '').trim();
+    return {
+      isHome: this.page === 'home',
+      isApply: this.page === 'apply',
+      menuOpen: this.state.menuOpen,
+      crossRef: this.crossRef,
+      openMenu: () => this.setState({ menuOpen: true }),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      goHome: () => this.nav('home'),
+      goApply: () => this.nav('apply'),
+      formUrl,
+      hasForm: formUrl.length > 0,
+      noForm: formUrl.length === 0,
+      faqs: questions.map(([q, a], i) => ({
+        q,
+        a,
+        open: this.state.openFaq === i,
+        sign: this.state.openFaq === i ? '–' : '+',
+        toggle: () => this.setState(s => ({ openFaq: s.openFaq === i ? null : i }))
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>
